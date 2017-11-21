@@ -16,7 +16,7 @@
 </head>
 <body>
     <div id="app">
-        <div :class="classes"></div>  <!--看这里啊-->
+        <div :class="[isActive, {another: !error}]"></div>  <!--class既可以用数组也可以用对象，也可以混用-->
     </div>
 
     <script src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
@@ -24,16 +24,10 @@
         var app = new Vue({
             el: document.getElementById('app'),
             data: {
-                isActive: true,
+                isActive: 'active',
                 error: null
             },
             computed:{
-                classes: function () {
-                    return {
-                        active: this.isActive && !this.isError,
-                        textfail : this.error && this.error.type === 'fail'
-                    }
-                }
             },
             methods:{
             },
