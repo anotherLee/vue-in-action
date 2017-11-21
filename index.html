@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue-In-Action</title>
+    <style>
+        .active{
+            width:400px;
+            height:400px;
+            border:1px solid red;
+            background-color:#eee;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        {{ reverseText() }}  <!-->在模板里也可以使用methods方法，但是必须要执行<--> 
+        <div :class="classes"></div>  <!--看这里啊-->
     </div>
 
     <script src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
@@ -16,14 +24,18 @@
         var app = new Vue({
             el: document.getElementById('app'),
             data: {
-                text:'123,456'
+                isActive: true,
+                error: null
             },
             computed:{
+                classes: function () {
+                    return {
+                        active: this.isActive && !this.isError,
+                        textfail : this.error && this.error.type === 'fail'
+                    }
+                }
             },
             methods:{
-                reverseText: function () {
-                    return this.text.split(',').reverse().join(',')
-                }
             },
             created: function () {
             },
@@ -32,8 +44,6 @@
             beforeDestroy: function () {
             }
         })
-
-        app.fullName = "Bob Zhao"
          
     </script>
     
