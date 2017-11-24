@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue-In-Action</title>
     <style>
+        [v-cloak]{
+            display:none;
+        }
         .active{
             width:400px;
             height:400px;
@@ -14,23 +17,22 @@
         }
     </style>
 </head>
-<body>
-    <div id="app">
-        <div :class="[isActive, {another: !error}]"></div>  <!--class既可以用数组也可以用对象，也可以混用-->
+<body> 
+    <div id="app" v-cloak>  <!--看这里啊-->
+        <div :class="[isActive, {another: !error}]"></div>
     </div>
-
+    <div>{{message}} </div>
     <script src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
     <script>
         var app = new Vue({
             el: document.getElementById('app'),
             data: {
-                isActive: 'active',
-                error: null
+                message:"这是一段文本"
             },
             computed:{
             },
-            methods:{
-            },
+            methods:{ 
+           }
             created: function () {
             },
             mounted: function () {
