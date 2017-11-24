@@ -21,11 +21,11 @@
     <div id="app">  
         <template v-if="status === true">
             <label>用户名:</label>
-            <input type="text" placeholder="请输入用户名">
+            <input type="text" placeholder="请输入用户名" :key="name-input">
         </template>
         <template v-else> 
             <label>邮箱:</label>
-            <input type="text" placeholder="请输入邮箱">
+            <input type="text" placeholder="请输入邮箱" :key="email-input"> <!--不使用key的话vue会复用元素,导致input的内容不变-->
         </template>
         <button @click = "change">click me</button>
     </div>
