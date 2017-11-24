@@ -19,18 +19,22 @@
 </head>
 <body> 
     <div id="app">  
-        <template v-if="getStatus  === 0"> <!--使用template，在渲染的时候不会出现在dom里-->
-            <div>小明</div>
-            <div>小花</div>
+        <template v-if="status === true">
+            <label>用户名:</label>
+            <input type="text" placeholder="请输入用户名">
         </template>
-        <button @click = "plus">click me</button>
+        <template v-else> 
+            <label>邮箱:</label>
+            <input type="text" placeholder="请输入邮箱">
+        </template>
+        <button @click = "change">click me</button>
     </div>
     <script src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
     <script>
         var app = new Vue({
             el: document.getElementById('app'),
             data: {
-                status:0
+                status:true
             },
             computed:{
                 getStatus: function () {
@@ -39,8 +43,8 @@
                 }
             },
             methods:{ 
-                plus: function () {
-                    this.status++
+                change: function () {
+                    this.status = !this.status
                 }    
             },
             created: function () {
