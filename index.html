@@ -19,18 +19,28 @@
 </head>
 <body> 
     <div id="app">  
-        <div v-once>{{message}}</div> <!--只沉浸一次，很少用到-->
+        <div v-if="getStatus  === 0">0</div>
+        <div v-else-if="getStatus === 1">1</div>
+        <div v-else="getStatus === 2">2</div>
+        <button @click = "plus">click me</button>
     </div>
     <script src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
     <script>
         var app = new Vue({
             el: document.getElementById('app'),
             data: {
-                message:"这是一段文本"
+                status:0
             },
             computed:{
+                getStatus: function () {
+                    this.status =  this.status > 2 ? 0 : this.status
+                    return this.status
+                }
             },
             methods:{ 
+                plus: function () {
+                    this.status++
+                }    
             },
             created: function () {
             },
