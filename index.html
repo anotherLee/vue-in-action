@@ -16,29 +16,28 @@
 </head>
 <body> 
     <div id="app">  
-        <span v-for="(item, index) in classmates" class="person">{{item.name}}</span>
+        <input type="checkbox" v-model="toggle" :true-value="value1" :false-value="value2" @change="log" id="test">
+        <label for="test">复选框</label>
     </div>
     <script src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
     <script>
         var app = new Vue({
             el: document.getElementById('app'),
             data: {
-                classmates: [
-                    { name: "zhangsan" },
-                    { name: "zhaosi" },  
-                    { name: "wangwu" }
-                ]
+                toggle:false,
+                value1: "a",
+                value2: "b"
             },
             computed:{
-                getStatus: function () {
-                    this.status =  this.status > 2 ? 0 : this.status
-                    return this.status
-                }
             },
             methods:{ 
-                change: function () {
-                    this.status = !this.status
-                }    
+                log: function () {
+                    console.log('------------------------')
+                    console.log("app.value=====>", app.value1)
+                    console.log("app.value2=====>", app.value2)
+                    console.log("app.toggle====>", app.toggle)
+                    console.log('------------------------')
+                }  
             },
             created: function () {
             },
@@ -47,10 +46,6 @@
             beforeDestroy: function () {
             }
         })
-        app.classmates = app.classmates.filter((item, index) => {
-            return item.name !== "zhangsan"
-        })
-         
     </script>
     
 </body>
