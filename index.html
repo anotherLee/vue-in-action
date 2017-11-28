@@ -11,26 +11,28 @@
             display: none;
         }
 
-        .person {
-            display: block;
-        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <input type="text" v-model.number="content" id="test">
-        <label for="test">例子</label>
-        <div>
-            {{content}} {{typeof content}}
-        </div>
+        <table>
+            <tbody></tbody>
+        </table>
+        <my-component></my-component>
     </div>
     <script src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
     <script>
+        var Child = {                 //这是局变注册的方法
+            template: "<div>李明儒</div>"
+        }
         var app = new Vue({
             el: document.getElementById('app'),
             data: {
                 content: 123
+            },
+            components:{
+                "my-component":Child
             },
             computed: {
             },
@@ -45,8 +47,7 @@
             beforeDestroy: function () {
             }
         })
+        
     </script>
-
 </body>
-
 </html>
