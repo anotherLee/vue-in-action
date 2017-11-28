@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue-In-Action</title>
     <style>
-        [v-cloak]{
-            display:none;
+        [v-cloak] {
+            display: none;
         }
-        .person{
-            display:block;
+
+        .person {
+            display: block;
         }
     </style>
 </head>
-<body> 
-    <div id="app">  
-        <input type="checkbox" v-model="toggle" :true-value="value1" :false-value="value2" @change="log" id="test">
-        <label for="test">复选框</label>
+
+<body>
+    <div id="app">
+        <input type="text" v-model.number="content" id="test">
+        <label for="test">例子</label>
+        <div>
+            {{content}} {{typeof content}}
+        </div>
     </div>
     <script src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
     <script>
         var app = new Vue({
             el: document.getElementById('app'),
             data: {
-                toggle:false,
-                value1: "a",
-                value2: "b"
+                content: 123
             },
-            computed:{
+            computed: {
             },
-            methods:{ 
+            methods: {
                 log: function () {
-                    console.log('------------------------')
-                    console.log("app.value=====>", app.value1)
-                    console.log("app.value2=====>", app.value2)
-                    console.log("app.toggle====>", app.toggle)
-                    console.log('------------------------')
-                }  
+                }
             },
             created: function () {
             },
@@ -47,6 +46,7 @@
             }
         })
     </script>
-    
+
 </body>
+
 </html>
